@@ -3,8 +3,8 @@ class BitcoinsController < ApplicationController
   def index
     # add backend code
     # render bitcoins/index view
-
-    bitcoin = 2.0
+    
+    @bitcoin = params["amount"]
 
     # connect to the Coindesk API
     # DON'T CHANGE THIS CODE
@@ -21,7 +21,7 @@ class BitcoinsController < ApplicationController
     @usd_rate = bitcoin_data["bpi"]["USD"]["rate_float"]
   
     # calculate value in USD of user's bitcoin
-    @usd_value = @usd_rate * bitcoin.to_f
+    @usd_value = @usd_rate * @bitcoin.to_f
 
   end
 
